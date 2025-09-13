@@ -65,3 +65,25 @@ export async function POST(request){
         return NextResponse.json({error: error.code || error.message}, {status: 400})
     }
 }
+
+// get all product for seller
+export async function GET(request){
+    try {
+        const {userId} = getAuth(request)
+        const storeId = await authSeller(userId)
+
+        if(!storeId){
+            return NextResponse.json({error: 'not authorized'}, {status: 400})
+        }
+
+        const products = await prisma.product.findMany({
+            where: {storeId}
+        })
+
+        return NextResponse.json({products})
+
+    } catch (error) {
+        console.error(error)
+        return NextResponse.json({error: error.code || error.message}, {status: 400})
+    }
+}
