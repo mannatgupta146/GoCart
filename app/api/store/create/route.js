@@ -20,7 +20,7 @@ export async function POST(request){
         const image = formData.get("image")
         
         if(!name || !username || !description || !email || !contact || !address || !image){
-            return NextResponse.json({error: "missing store information"},{status: 400})
+            return NextResponse.json({error: "missing store information"}, {status: 400})
         }
 
         // check if user have already registered a store 
@@ -39,7 +39,7 @@ export async function POST(request){
         })
 
         if(isUsernameTaken){
-            return NextResponse.json({error: "username already taken"},{status: 400})
+            return NextResponse.json({error: "username already taken"}, {status: 400})
         }
 
         // image upload to imagekit

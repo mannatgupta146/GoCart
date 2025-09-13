@@ -11,7 +11,7 @@ export async function POST(request){
         const storeId = await authSeller(userId)
 
         if(!storeId){
-            return NextResponse.json({error: 'not authorized'}, {status: 400})
+            return NextResponse.json({error: 'not authorized'}, {status: 401})
         }
 
         // get the data from form 
@@ -73,7 +73,7 @@ export async function GET(request){
         const storeId = await authSeller(userId)
 
         if(!storeId){
-            return NextResponse.json({error: 'not authorized'}, {status: 400})
+            return NextResponse.json({error: 'not authorized'}, {status: 401})
         }
 
         const products = await prisma.product.findMany({
