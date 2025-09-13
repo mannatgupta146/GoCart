@@ -23,19 +23,19 @@ export async function POST(request){
         const category = formData.get("category")
         const images = formData.getAll("images")
 
-        if(!name || !description || !mrp || !price || !category || !images.length < 1){
+        if(!name || !description || !mrp || !price || !category || images.length < 1){
             return NextResponse.json({error: 'messing product details'}, {status: 400})
         }
 
         // uploading images to imagekit
         const imagesUrl = await Promise.all(images.map(async(image)=>{
-            const buffer = buffer.from(await image.arrayBuffer())
+            const buffer = Buffer.from(await image.arrayBuffer())
             const response = await imagekit.upload({
                 file: buffer,
                 fileName: image.name,
                 folder: "products"
             })
-            const url = imageKit.url({
+            const url = imagekit.url({
                 path: response.filePath,
                 transformation: [
                     {quality: 'auto'},
