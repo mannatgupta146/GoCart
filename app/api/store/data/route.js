@@ -1,7 +1,6 @@
 import prisma from "@/lib/prisma"
 import { NextResponse } from "next/server"
 
-
 // get store info and store products 
 export async function GET(request){
     try {
