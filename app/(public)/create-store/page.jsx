@@ -92,6 +92,7 @@ export default function CreateStore() {
                 {headers: {Authorization: `Bearer ${token}`}}
             )
             toast.success(data.message)
+            await fetchSellerStatus()
 
         } catch (error) {
             toast.error(error?.response?.data?.error || error.message)
@@ -100,8 +101,10 @@ export default function CreateStore() {
     }
 
     useEffect(() => {
-        fetchSellerStatus()
-    }, [])
+        if(user){
+            fetchSellerStatus()
+        }
+    }, [user])
 
     if(!user){
         return (
