@@ -7,14 +7,14 @@ import { NextResponse } from "next/server";
 // add new coupon
 export async function POST(request){
     try {
-        const {userId} = getAuth()
+        const {userId} = getAuth(request)
         const isAdmin = await authAdmin(userId)
 
         if(!isAdmin){
             return NextResponse.json({error: "not authorized"}, {status: 401})
         }
 
-        const {coupon} = await request.json()
+        const coupon = await request.json()
         coupon.code = coupon.code.toUpperCase()
 
         await prisma.coupon.create({data: coupon})
@@ -30,7 +30,7 @@ export async function POST(request){
 // dete coupon /api/coupon?id=couponId
 export async function DELETE(request) {
     try {
-        const {userId} = getAuth()
+        const {userId} = getAuth(request)
         const isAdmin = await authAdmin(userId)
 
         if(!isAdmin){
@@ -53,7 +53,7 @@ export async function DELETE(request) {
 // get all coupons
 export async function GET(request) {
     try {
-        const {userId} = getAuth()
+        const {userId} = getAuth(request)
         const isAdmin = await authAdmin(userId)
 
         if(!isAdmin){
@@ -61,7 +61,7 @@ export async function GET(request) {
         }
 
         const coupons = await prisma.coupon.findMany({})
-         return NextResponse.json({coupons})
+        return NextResponse.json({coupons})
 
     } catch (error) {
         console.error(error)
