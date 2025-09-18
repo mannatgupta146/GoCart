@@ -1,3 +1,4 @@
 neon 
 inngest
 clerk
+prisma
