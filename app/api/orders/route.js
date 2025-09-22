@@ -109,12 +109,36 @@ export async function POST(request){
         }
 
         // clear the cart 
-        await prisma.cart.update({
+        await prisma.user.update({
             where: {id: userId},
             data: {cart: {}}
         })
 
         return NextResponse.json({message: "Order placed successfully"})
+
+    } catch (error) {
+        console.error(error)
+        return NextResponse.json({error: error.code || error.message}, {status: 500})
+    }
+}
+
+// get all orders for a user
+export async function GET(request){
+    try {
+        const {userId, has} = getAuth(request)
+        const orders = await prisma.order.findMany({
+            where: {userId, OR: [
+                {paymentMethod: paymentMethod.COD},
+                {AND: [{paymentMethod: paymentMethod.STRIPE}, {isPaid: true}]}
+            ]},
+            include:{
+                orderItems: {include: {product: true}},
+                address: true
+            },
+            orderBy: {createdAt: 'desc'}
+        })
+
+        return NextResponse.json({orders})
 
     } catch (error) {
         console.error(error)
