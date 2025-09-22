@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 import { getAuth } from "@clerk/nextjs/server";
+import { PaymentMethod } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 
@@ -125,11 +126,11 @@ export async function POST(request){
 // get all orders for a user
 export async function GET(request){
     try {
-        const {userId, has} = getAuth(request)
+        const {userId} = getAuth(request)
         const orders = await prisma.order.findMany({
             where: {userId, OR: [
-                {paymentMethod: paymentMethod.COD},
-                {AND: [{paymentMethod: paymentMethod.STRIPE}, {isPaid: true}]}
+                {paymentMethod: PaymentMethod.COD},
+                {AND: [{paymentMethod: PaymentMethod.STRIPE}, {isPaid: true}]}
             ]},
             include:{
                 orderItems: {include: {product: true}},
