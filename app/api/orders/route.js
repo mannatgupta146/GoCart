@@ -47,13 +47,13 @@ export async function POST(request){
         // check if coupon is applicable for members
          const isPlusMember = has({plan: 'plus'})
         
-        if(coupon.forMember){
+        if(coupon && coupon.forMember){
     
             if(!isPlusMember){
                 return NextResponse.json({error: "Coupon valid for members only"}, {status: 400})
             }
         }
-
+        
         // group orders by storeId using a map
         const ordersByStore = new Map()
 
