@@ -47,7 +47,7 @@ export async function POST(request){
         // check if coupon is applicable for members
          const isPlusMember = has({plan: 'plus'})
         
-        if(coupon && coupon.forMember){
+        if(couponCode && coupon.forMember){
     
             if(!isPlusMember){
                 return NextResponse.json({error: "Coupon valid for members only"}, {status: 400})
