@@ -13,15 +13,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <ClerkProvider frontendApi={process.env.NEXT_PUBLIC_CLERK_FRONTEND_API}>
-            <html lang="en">
-                <body className={`${outfit.className} antialiased`} suppressHydrationWarning={true}>
-                    <StoreProvider>
-                        <Toaster />
-                        {children}
-                    </StoreProvider>
-                </body>
-            </html>
+        <ClerkProvider>
+        <html lang="en">
+            <body className={`${outfit.className} antialiased`} suppressHydrationWarning={true}>
+                <StoreProvider>
+                    <Toaster />
+                    {children}
+                </StoreProvider>
+            </body>
+        </html>
         </ClerkProvider>
     );
 }
