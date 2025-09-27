@@ -56,16 +56,23 @@ The addition of **AI via Gemini Free API** enhances the experience by analyzing 
 Contributions are welcome! Here’s how you can help improve GoCart:
 
 1. **Fork the repository**  
+
 2. **Create a new branch**  
-   ```bash git checkout -b feature/your-feature-name```
 
-3. **Make your changes** and commit them
+```
+git checkout -b feature/your-feature-name
+```
 
-   ```bash git commit -m "Add new feature or fix" ```
-4. **Push your branch**
+3. **Make your changes** and commit them  
+```
+git commit -m "Add new feature or fix"
+```
 
-   ```bash git push origin feature/your-feature-name```
-   
+4. **Push your branch**  
+```
+git push origin feature/your-feature-name
+```
+
 5. **Open a Pull Request** explaining your changes
 
 ## 📖 Credits
