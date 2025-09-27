@@ -115,6 +115,7 @@ export default function StoreAddProduct() {
 
             // reset images
             setImages({ 1: null, 2: null, 3: null, 4: null })
+            setAiUsed(false)
 
         } catch (error) {
             toast.error(error?.response?.data?.error || error.message)
