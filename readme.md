@@ -51,24 +51,21 @@ The addition of **AI via Gemini Free API** enhances the experience by analyzing 
 - Introduce advanced marketing & promotional tools for sellers  
 - Improve performance and scalability for large marketplaces  
 
-
 ## 🤝 Contributing
 
 Contributions are welcome! Here’s how you can help improve GoCart:
 
-1. **Fork the repository**
-2. **Create a new branch**
+1. **Fork the repository**  
+2. **Create a new branch**  
+   ```bash git checkout -b feature/your-feature-name```
 
-   ```git checkout -b feature/your-feature-name```
-  
 3. **Make your changes** and commit them
 
-   ```git commit -m "Add new feature or fix"```
-
+   ```bash git commit -m "Add new feature or fix" ```
 4. **Push your branch**
 
-   ```git push origin feature/your-feature-name```
-
+   ```bash git push origin feature/your-feature-name```
+   
 5. **Open a Pull Request** explaining your changes
 
 ## 📖 Credits
@@ -77,4 +74,4 @@ Contributions are welcome! Here’s how you can help improve GoCart:
 - Tutorial: [GreatStack – Full Stack E-Commerce Project](https://youtu.be/aYu4xkBdkNA?si=VqRxLUlOk3SvuD4f)  
 
 ---
-> 🚀🛒 **Let GoCart drive your marketplace experience, making every purchase seamless, smart, and effortless.** ✨
+> 🛒 **Let GoCart drive your marketplace experience, making every purchase seamless, smart, and effortless.** ✨
